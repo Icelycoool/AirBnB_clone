@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 import os
 
 
-class TestFileStorage(unittest, TestCase):
+class TestFileStorage(unittest.TestCase):
     """
     Unittetst for FileStorage class
     """
@@ -29,10 +29,10 @@ class TestFileStorage(unittest, TestCase):
 
     def test_new(self):
         """Test the new method"""
-        mode = BaseModel()
+        model = BaseModel()
         self.storage.new(model)
         self.storage.save()
-        self.storage.save()
+        self.assertIn(f"BaseModel.{model.id}", self.storage.all())
 
     def test_save(self):
         """Test save method"""
@@ -46,7 +46,7 @@ class TestFileStorage(unittest, TestCase):
         model = BaseModel()
         self.storage.new(model)
         self.storage.save()
-        self.storage.reload
+        self.storage.reload()
         key = f"BaseModel.{model.id}"
         self.assertIn(key, self.storage.all())
 
