@@ -5,7 +5,7 @@ Contanins BaseModel unittests
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
-
+from models import storage
 
 
 class TestBaseModel(unittest.TestCase):
@@ -28,9 +28,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Tests that save updates the attribute `update_at`"""
-        last_updated = self.instance.updated_at
+        initial_updated = self.instance.updated_at
         self.instance.save()
-        self.assertNotEqual(last_updated, self.instance.updated_at)
+        last_updated = self.instance.updated_at
+        self.assertNotEqual(initial_updated, last_updated)
+        self.assertTrue(last_updated > initial_updated)
 
     def test_to_dict(self):
         """Tests the to_dict method"""
