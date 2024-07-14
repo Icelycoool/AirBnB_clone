@@ -28,6 +28,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Tests that save updates the attribute `update_at`"""
+        model = BaseModel()
         initial_updated = self.instance.updated_at
         self.instance.save()
         last_updated = self.instance.updated_at
