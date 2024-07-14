@@ -32,7 +32,7 @@ class TestFileStorage(unittest.TestCase):
         model = BaseModel()
         self.storage.new(model)
         self.storage.save()
-        self.assertIn(f"BaseModel.{model.id}", self.storage.all())
+        self.
 
     def test_save(self):
         """Test save method"""
