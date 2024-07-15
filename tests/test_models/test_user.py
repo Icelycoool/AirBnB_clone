@@ -10,27 +10,31 @@ class TestUser(unittest.TestCase):
     """Tests the User class"""
 
     def setUp(self):
-        self.user = User()
+        pass
 
     def test_email_assignment(self):
         """Test User email assignment"""
-        self.user.email = "user@email.com"
-        self.assertEqual(self.user.email, "user@email.com")
+        user = User()
+        user.email = "user@email.com"
+        self.assertEqual(user.email, "user@email.com")
 
     def test_password_assignment(self):
         """Test User password assignment"""
-        self.user.password = "password"
-        self.assertEqual(self.user.password, "password")
+        user = User()
+        user.password = "password"
+        self.assertEqual(user.password, "password")
 
     def test_first_name_assignment(self):
         """Test User first_name assignment"""
-        self.user.first_name = "John"
-        self.assertEqual(self.user.first_name, "John")
+        user = User()
+        user.first_name = "John"
+        self.assertEqual(user.first_name, "John")
 
     def test_last_name_assignment(self):
         """Test User last_name assignment"""
-        self.user.last_name = "Doe"
-        self.assertEqual(self.user.last_name, "Doe")
+        user = User()
+        user.last_name = "Doe"
+        self.assertEqual(user.last_name, "Doe")
 
 if __name__ == "__main__":
     unittest.main()
