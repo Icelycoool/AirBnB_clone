@@ -6,6 +6,7 @@ JSON file and deserializes JSON file to instances.
 
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -49,6 +50,8 @@ class FileStorage:
 
                     if class_name == "BaseModel":
                         obj_instance = BaseModel(**val)
+                    elif clas_name == "User":
+                        object_instance = User(**val)
 
                     self.__objects[key] = obj_instance
         except FileNotFoundError:
