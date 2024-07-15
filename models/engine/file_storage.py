@@ -21,6 +21,15 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    imported_classes = {
+                'BaseModel': BaseModel,
+                'User': User,
+                'Amenity': Amenity,
+                'City': City,
+                'State': State,
+                'Place': Place,
+                'Review': Review
+    }
 
     def all(self):
         """
@@ -47,17 +56,6 @@ class FileStorage:
         """
         Deserializes the JSON file to __objects.
         """
-
-        imported_classes = {
-                'BaseModel': BaseModel,
-                'User': User,
-                'Amenity': Amenity,
-                'City': City,
-                'State': State,
-                'Place': Place,
-                'Review': Review
-        }
-
         try:
             with open(self.__file_path, 'r') as file:
                 obj_dict = json.load(file)
