@@ -7,6 +7,11 @@ JSON file and deserializes JSON file to instances.
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
@@ -42,17 +47,24 @@ class FileStorage:
         """
         Deserializes the JSON file to __objects.
         """
+
+        imported_classes = {
+                'BaseModel': BaseModel,
+                'User': User,
+                'Amenity': Amenity,
+                'City': City,
+                'State': State,
+                'Place': Place,
+                'Review': Review
+        }
+
         try:
             with open(self.__file_path, 'r') as file:
                 obj_dict = json.load(file)
                 for key, val in obj_dict.items():
                     class_name, obj_id = key.split('.')
-
-                    if class_name == "BaseModel":
-                        obj_instance = BaseModel(**val)
-                    elif class_name == "User":
-                        obj_instance = User(**val)
-
-                    self.__objects[key] = obj_instance
+                    if class_name in self.imported_classes:
+                        obj_instance = self.imported_classes[class_name](**val)
+                        self.__objects[key] = obj_instance
         except FileNotFoundError:
             pass
