@@ -51,7 +51,7 @@ class FileStorage:
                     if class_name == "BaseModel":
                         obj_instance = BaseModel(**val)
                     elif class_name == "User":
-                        object_instance = User(**val)
+                        obj_instance = User(**val)
 
                     self.__objects[key] = obj_instance
         except FileNotFoundError:
