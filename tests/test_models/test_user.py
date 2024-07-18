@@ -36,9 +36,14 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(self.user.last_name, str)
 
     def test_save_method(self):
-        """Test sav emethod"""
+        """Test save method"""
         self.user.save()
         self.assertTrue(os.path.exists(FileStorage._FileStorage__file_path))
+
+    def test_str_method(self):
+        """Test __str__ method"""
+        expected_str = f"[User] ({self.user.id}) {self.user.__dict__}"
+        self.assertEqual(str(self.user), expected_str)
 
     def test_to_dict_method(self):
         """Test to_dict method"""
