@@ -14,17 +14,6 @@ class TestPlace(unittest.TestCase):
 
     def setUp(self):
         self.place = Place()
-        self.place.city_id = "001"
-        self.place.user_id = "0001"
-        self.place.name = "Towfiiq"
-        self.place.description = "Two Story"
-        self.place.number_rooms = 5
-        self.place.number_bathrooms = 3
-        self.place.max_guest = 7
-        self.place.price_by_night = 630
-        self.place.latitude = 1.05
-        self.place.longitude = 1.01
-        self.place.amenity_ids = ['001', '002']
 
     def tearDown(self):
         del self.place
@@ -72,7 +61,20 @@ class TestPlace(unittest.TestCase):
 
     def test_to_dict_method(self):
         """Test to_dict method"""
+        self.place.city_id = "001"
+        self.place.user_id = "0001"
+        self.place.name = "Towfiiq"
+        self.place.description = "Two Story"
+        self.place.number_rooms = 5
+        self.place.number_bathrooms = 3
+        self.place.max_guest = 7
+        self.place.price_by_night = 630
+        self.place.latitude = 1.05
+        self.place.longitude = 1.01
+        self.place.amenity_ids = ['001', '002']
+
         place_dict = self.place.to_dict()
+
         self.assertIsInstance(place_dict["id"], str)
         self.assertEqual(place_dict["city_id"], "001")
         self.assertEqual(place_dict["user_id"], "0001")
