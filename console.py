@@ -15,7 +15,25 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """
-    Command interpreter class for AIRBNB_CLONE
+    This Module is the entry point to interpreter for the AIRBNB_CLONE.
+
+    It provides a command-line interface for managing instances of
+    various classes (BaseModel, User, State, City, Amenity, Place,
+    Review) within the storage system.
+
+    Example Usage:
+    $ ./console.py
+    (hbnb)
+
+    (hbnb) help
+
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  all  create  destroy  help  quit  show  update
+
+    (hbnb) help quit
+
+    $
     """
     prompt = "(hbnb) "
     classes = {
@@ -132,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        pdates an instance based on the class name
+        Updates an instance based on the class name
         and id by adding or updating attribute
         """
         args = arg.split()
